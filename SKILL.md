@@ -26,7 +26,7 @@ Use this skill when an agent is asked to create a scraper from a URL, without re
 - `create_scraper`
   - Required: `url`
   - Optional: `name`, `description`
-  - Starts agent generation and returns `generation_id` + `status_url`.
+  - Starts agent generation and returns `id` + `status_url` under `create_scraper`.
 - `get_scraper_generation`
   - Required: `generation_id`
   - Returns generation lifecycle and `generated_task` when ready.
