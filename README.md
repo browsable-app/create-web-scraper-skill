@@ -14,10 +14,11 @@ It is designed for non-technical users: they should only need to say what URL th
 ## Zero-knowledge onboarding flow
 
 1. Call `create_scraper` with the target URL.
-2. Poll `get_scraper_generation` with `generation_id` from `create_scraper.result.id` until status is `completed`.
-3. Call `run_task` with `generated_task.task_key`.
-4. Poll `get_run` with returned `run_id` until status is terminal (`succeeded`, `failed`, `errored`, `cancelled`).
-5. If auth is required, surface `auth_required.hosted_url` and ask the user to complete it, then resume polling.
+2. Tell the user scraper creation can take a few minutes.
+3. Poll `get_scraper_generation` with `generation_id` from `create_scraper.result.id` every 10 seconds until status is `completed`.
+4. Extract `generated_task.task_key` and call `run_task`.
+5. Poll `get_run` with returned `run_id` every 10 seconds until status is terminal (`succeeded`, `failed`, `errored`, `cancelled`).
+6. If auth is required, surface `auth_required.hosted_url` and ask the user to complete it, then resume polling.
 
 The important part is that API responses are structured and machine-readable, so the agent never has to assume user knowledge of Browsable.
 
