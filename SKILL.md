@@ -13,8 +13,9 @@ Use this skill when an agent is asked to create a scraper from a URL, without re
 This skill is MCP-first and must be used as the default path:
 
 1. Use the Browsable MCP tools in this order: `create_scraper` -> `get_scraper_generation` -> `run_task` -> `get_run`.
-2. Do not inspect target page DOM or write custom scraper code directly.
-3. Only fall back to the HTTP API if MCP tooling is unavailable in the current environment.
+2. Optionally call `whoami` first to confirm MCP is connected in the current thread.
+3. Do not inspect target page DOM or write custom scraper code directly.
+4. Only fall back to the HTTP API if MCP tooling is unavailable in the current environment (for example, tools are not exposed or return a tool-missing error).
 
 ## MCP setup
 
