@@ -1,6 +1,6 @@
 # Browsable Agent Skill
 
-This repository contains the public [Skill](https://github.com/Tiiny-Host/skills)-style instructions for using Browsable from agents (Claude, Codex, Cursor, etc.).
+This repository contains public instructions for using Browsable from agents (Claude, Codex, Cursor, etc.).
 
 ## What this gives agents
 
