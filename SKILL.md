@@ -8,6 +8,39 @@ description: "Create and run Browsable scrapers from URLs for agent-based workfl
 ## Purpose
 Use this skill when an agent is asked to create a scraper from a URL, without requiring users to know Browsable internals.
 
+## MCP setup
+
+Before this skill can run tools, connect to the remote MCP server:
+
+- Server URL: `https://mcp.browsable.app`
+- Add with Codex: `codex mcp add browsable --url https://mcp.browsable.app`
+- Authorize with Codex: `codex mcp login browsable --scopes tasks.read,tasks.run,runs.read,task_generations.write,billing.read,keys.manage`
+- Add with Claude Code: `claude mcp add --transport http browsable https://mcp.browsable.app`
+- Add with Cursor config:
+
+```json
+{
+  "mcpServers": {
+    "browsable": {
+      "url": "https://mcp.browsable.app"
+    }
+  }
+}
+```
+
+- Add with VS Code config:
+
+```json
+{
+  "servers": {
+    "browsable": {
+      "type": "http",
+      "url": "https://mcp.browsable.app"
+    }
+  }
+}
+```
+
 ## MCP-first flow
 
 1. Ask for target URL and, if helpful, extraction goal.
