@@ -23,6 +23,20 @@ The important part is that API responses are structured and machine-readable, so
 
 ## Use
 
+### Install this skill package
+
+```bash
+npx skills add browsable-app/create-web-scraper-skill
+```
+
+Install to all supported agents:
+
+```bash
+npx skills add browsable-app/create-web-scraper-skill --all
+```
+
+### Install directly
+
 Install this skill into your agent of choice by pointing it at:
 
 - `https://github.com/browsable-app/create-web-scraper-skill`

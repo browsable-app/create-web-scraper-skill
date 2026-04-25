@@ -28,6 +28,15 @@ Before this skill can run tools, connect to the remote MCP server:
 }
 ```
 
+## Install via npx skills
+
+Install this skill package from GitHub with:
+
+- `npx skills add browsable-app/create-web-scraper-skill`
+- `npx skills add browsable-app/create-web-scraper-skill --all`
+
+Use `--all` to install for all supported agents, or pass `--agent <name>` to target one.
+
 - Add with VS Code config:
 
 ```json
