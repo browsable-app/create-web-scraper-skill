@@ -8,6 +8,14 @@ description: "Create and run Browsable scrapers from URLs for agent-based workfl
 ## Purpose
 Use this skill when an agent is asked to create a scraper from a URL, without requiring users to know Browsable internals.
 
+## Execution policy (required)
+
+This skill is MCP-first and must be used as the default path:
+
+1. Use the Browsable MCP tools in this order: `create_scraper` -> `get_scraper_generation` -> `run_task` -> `get_run`.
+2. Do not inspect target page DOM or write custom scraper code directly.
+3. Only fall back to the HTTP API if MCP tooling is unavailable in the current environment.
+
 ## MCP setup
 
 Before this skill can run tools, connect to the remote MCP server:
@@ -58,6 +66,17 @@ Use `--all` to install for all supported agents, or pass `--agent <name>` to tar
 4. Once complete, extract `generated_task.task_key` and call `run_task`.
 5. Poll `get_run` with the returned `run_id` until run status is terminal.
 6. If any generation or run response indicates auth is required, surface the `hosted_url` and ask the user to complete it, then continue polling.
+
+## API fallback (only when MCP is unavailable)
+
+If MCP tools are unavailable (for example, the model cannot call `create_scraper`), use Browsable REST directly:
+
+- `POST https://api.browsable.app/v1/task-generations` with JSON `{ "url": "<target-url>", "mode": "agent", "name?": "...", "description?": "..." }`
+- Poll `GET https://api.browsable.app/v1/task-generations/{generation_id}` until `status=completed`.
+- `POST https://api.browsable.app/v1/tasks/{task_key}/runs` using `generated_task.task_key`.
+- Poll `GET https://api.browsable.app/v1/runs/{run_id}` until terminal status.
+
+For API fallback you need an API key and the authenticated API base URL from the caller.
 
 ## Tool behavior
 

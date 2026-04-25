@@ -42,3 +42,5 @@ Install this skill into your agent of choice by pointing it at:
 - `https://github.com/browsable-app/create-web-scraper-skill`
 
 Then call the Browsable MCP tools when the user asks for URL-driven scraping.
+
+If MCP is not available in the current agent runtime, this skill falls back to the Browsable HTTP API using the same flow (create task generation, poll, run task, poll run).
