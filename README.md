@@ -12,6 +12,6 @@ This repository contains the public [Skill](https://github.com/Tiiny-Host/skills
 
 Install this skill into your agent of choice by pointing it at:
 
-- `https://github.com/EmilePW/browsable-agent-skill`
+- `https://github.com/browsable-app/create-web-scraper-skill`
 
 Then call the Browsable MCP tools when the user asks for URL-driven scraping.
